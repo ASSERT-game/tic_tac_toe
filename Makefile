@@ -8,8 +8,10 @@ BIN_DIR = bin/
 
 # List of all the source files.
 SRC_NAMES = \
+	carve_texture \
 	game_input \
 	main \
+	render \
 	SDL_initialize \
 
 # List of all the source files, folders are to be added by

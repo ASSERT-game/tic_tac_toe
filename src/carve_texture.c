@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_config.h                                    :+:      :+:    :+:   */
+/*   carve_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 05:25:29 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 01:08:07 by home             ###   ########.fr       */
+/*   Created: 2020/06/19 00:53:51 by home              #+#    #+#             */
+/*   Updated: 2020/06/19 01:04:55 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_CONFIG_H
-# define WINDOW_CONFIG_H
+#include "master.h"
 
-# define WIN_TITLE "Tic Tac Toe"
+SDL_Rect	*carve_tictactoe_texture()
+{
+	int			col;
+	int			row;
+	SDL_Rect	*result;
 
-# define WIN_WIDTH  (192)
-# define WIN_HEIGHT (192)
+	row = 0;
+	result = malloc(sizeof(*result) * (4 * 2));
+	while (row < 2)
+	{
+		col = 0;
+		while (col < 4)
+		{
+			result[row * 4 + col].h = 16;
+			result[row * 4 + col].w = 16;
+			result[row * 4 + col].x = (col * 16);
+			result[row * 4 + col].y = (row * 16);
+			col++;
+		}
+		row++;
+	}
 
-# define WIN_POS_X 2700
-# define WIN_POS_Y 100
-
-#endif
+	return (result);
+}

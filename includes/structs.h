@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 03:05:42 by home              #+#    #+#             */
-/*   Updated: 2020/06/18 22:13:12 by home             ###   ########.fr       */
+/*   Updated: 2020/06/19 01:28:42 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ typedef struct	s_display
 typedef struct	s_game_context
 {
 	bool		active;
-}				t_game_context;
+
+	SDL_Texture	*texture;
+	SDL_Rect	*src_rect;
+
+	char		map[9];
+
+	int			mouse_x;
+	int			mouse_y;
+}				t_game_state;
 
 #endif

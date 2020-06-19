@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_config.h                                    :+:      :+:    :+:   */
+/*   texture_id.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 05:25:29 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 01:08:07 by home             ###   ########.fr       */
+/*   Created: 2020/06/19 00:57:19 by home              #+#    #+#             */
+/*   Updated: 2020/06/19 01:24:15 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_CONFIG_H
-# define WINDOW_CONFIG_H
+#ifndef TEXTURE_ID_H
+# define TEXTURE_ID_H
 
-# define WIN_TITLE "Tic Tac Toe"
+# define NONE		(0)
+# define HOVER		(1)
+# define X_TEX		(2)
+# define O_TEX		(3)
 
-# define WIN_WIDTH  (192)
-# define WIN_HEIGHT (192)
-
-# define WIN_POS_X 2700
-# define WIN_POS_Y 100
+# define SLASH		(4)
+# define HORIZONTAL	(5)
+# define BACKSLASH	(6)
+# define VERTICAL	(7)
 
 #endif

@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_input.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 11:30:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 02:21:50 by home             ###   ########.fr       */
+/*   Created: 2020/06/19 02:40:56 by home              #+#    #+#             */
+/*   Updated: 2020/06/19 02:20:00 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "master.h"
 
-void	process_user_input(t_game_state *game_state)
+int		screen_to_board(int x, int y)
 {
-	SDL_Event		e;
+	int		result;
 
-	while (SDL_PollEvent(&e) != 0)
-	{
-		if (e.type == SDL_QUIT)
-		{
-			game_state->active = false;
-			break ;
-		}
-		else if (e.type == SDL_MOUSEMOTION)
-			SDL_GetMouseState(&(game_state->mouse_x), &(game_state->mouse_y));
-		else if (e.type == SDL_MOUSEBUTTONDOWN)
-		{
-			SDL_GetMouseState(&(game_state->select_x), &(game_state->select_y));
-		}
-	}
+	result = (x / 64) + ((y / 64) * 3);
+	return (result);
+}
+
+void	get_loc(int i, int *x, int *y)
+{
+	*x = i % 3;
+	*y = i / 3;
+
+	*y *= 64;
+	*x *= 64;
 }

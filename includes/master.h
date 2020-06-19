@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:38:32 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 01:22:46 by home             ###   ########.fr       */
+/*   Updated: 2020/06/19 03:19:01 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,16 @@ SDL_Rect	*carve_tictactoe_texture();
 
 void		draw_hover_tile(t_game_state *game_state, t_display *display);
 void		draw_grid(t_game_state *game_state, t_display *display);
+void		draw_game_state(t_game_state *game_state, t_display *display);
 
 void		process_user_input(t_game_state *game_state);
-// void		update_game_state(t_game_state *game_state);
+void		update_game(t_game_state *game_state);
+
+bool		win_state(t_game_state *game_state);
+
+void		reset_selection(t_game_state *game_state);
+
+int			screen_to_board(int x, int y);
+void		get_loc(int i, int *x, int *y);
 
 #endif

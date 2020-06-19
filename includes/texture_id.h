@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 00:57:19 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 01:24:15 by home             ###   ########.fr       */
+/*   Updated: 2020/06/19 02:38:55 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@
 # define HORIZONTAL	(5)
 # define BACKSLASH	(6)
 # define VERTICAL	(7)
+
+# define O_TURN		(0)
+# define X_TURN		(1)
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 01:23:04 by home             ###   ########.fr       */
+/*   Updated: 2020/06/19 03:43:06 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 void	game_context_initialize(t_game_state *game_state, t_display *display)
 {
 	game_state->active = true;
+	game_state->playing = true;
 	game_state->texture = IMG_LoadTexture(display->renderer, "resources/tictactoe_texture.png");
 	bzero(game_state->map, sizeof(game_state->map));
 
 	game_state->src_rect = carve_tictactoe_texture();
+
+	reset_selection(game_state);
+
+	game_state->turn = 0;
 }
 
 int	main(void)
@@ -32,14 +37,19 @@ int	main(void)
 	{
 		process_user_input(&game_state);
 
-		// update_game_state(&game_state);
+		update_game(&game_state);
+
+		draw_game_state(&game_state, &display);
+		draw_grid(&game_state, &display);
 		draw_hover_tile(&game_state, &display);
 
-		draw_grid(&game_state, &display);
+		// if (game_state.playing = false)
+		// 	draw_win_state();
 
 		SDL_RenderPresent(display.renderer);
 		SDL_RenderClear(display.renderer);
 	}
 	SDLU_close(&display);
+	printf("Thank you for playing.\n");
 	return (0);
 }

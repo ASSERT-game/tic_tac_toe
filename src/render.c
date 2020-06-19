@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 01:12:57 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 01:30:22 by home             ###   ########.fr       */
+/*   Updated: 2020/06/19 03:12:09 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,27 @@ void	draw_grid(t_game_state *game_state, t_display *display)
 	}
 	SDL_SetRenderDrawColor(display->renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
 	(void)game_state;
+}
+
+void	draw_game_state(t_game_state *game_state, t_display *display)
+{
+	int			i;
+	int			text_type;
+	SDL_Rect	rect;
+	SDL_Rect	src_rect;
+
+	i = 0;
+	rect.h = 64;
+	rect.w = 64;
+	while (i < 9)
+	{
+		if (game_state->map[i] != NONE)
+		{
+			text_type = game_state->map[i];
+			get_loc(i, &(rect.x), &(rect.y));
+			src_rect = game_state->src_rect[text_type];
+			SDL_RenderCopy(display->renderer, game_state->texture, &src_rect, &rect);
+		}
+		i++;
+	}
 }

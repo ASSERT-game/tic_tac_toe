@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 02:29:27 by home              #+#    #+#             */
-/*   Updated: 2020/06/20 19:04:08 by home             ###   ########.fr       */
+/*   Updated: 2020/06/20 22:58:17 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	update_game(t_game_state *game_state)
 			game_state->map[screen_to_board(game_state->select_x, game_state->select_y)] = X_TEX;
 		game_state->turn++;
 
-		if (win_state(game_state) == true)
-			game_state->active = false;
+		// if (win_state(game_state->map) == true)
+		// 	game_state->active = false;
 	}
 
 	reset_selection(game_state);

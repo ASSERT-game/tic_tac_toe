@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/20 18:50:23 by home             ###   ########.fr       */
+/*   Updated: 2020/06/20 22:43:49 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	main(int aa, char **args)
 	game_context_initialize(&game_state, &display);
 	if (aa == 2 && strcmp(args[1], "AI") == 0)
 		AI_initialize(&game_state);
+
+	printf("AI: %d\n", game_state.AI_turn);
+
 	while (game_state.active == true)
 	{
 		process_user_input(&game_state);

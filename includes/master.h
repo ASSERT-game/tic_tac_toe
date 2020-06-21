@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 03:57:35 by home              #+#    #+#             */
-/*   Updated: 2020/06/20 18:55:52 by home             ###   ########.fr       */
+/*   Updated: 2020/06/20 21:53:25 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		draw_game_state(t_game_state *game_state, t_display *display);
 void		process_user_input(t_game_state *game_state);
 void		update_game(t_game_state *game_state);
 
-bool		win_state(t_game_state *game_state);
+bool		win_state(char *game_state);
 
 void		reset_selection(t_game_state *game_state);
 

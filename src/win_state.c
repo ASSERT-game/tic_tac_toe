@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 03:18:34 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 03:52:37 by home             ###   ########.fr       */
+/*   Updated: 2020/06/20 22:28:10 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,24 @@ bool	diagonal_check(char *map)
 	return (false);
 }
 
-bool	win_state(t_game_state *game_state)
+bool	win_state(char *game_state)
 {
 	bool	result;
 
 	result = false;
-	if (horizontal_check(game_state->map) == true)
+	if (horizontal_check(game_state) == true)
 	{
-		printf("H");
+		// printf("H");
 		result = true;
 	}
-	else if (vertical_check(game_state->map) == true)
+	else if (vertical_check(game_state) == true)
 	{
-		printf("V");
+		// printf("V");
 		result = true;
 	}
-	else if (diagonal_check(game_state->map) == true)
+	else if (diagonal_check(game_state) == true)
 	{
-		printf("D");
+		// printf("D");
 		result = true;
 	}
 	return (result);

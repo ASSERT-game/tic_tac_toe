@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 02:29:27 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 03:43:11 by home             ###   ########.fr       */
+/*   Updated: 2020/06/20 19:04:08 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ bool	valid_move(t_game_state *game_state)
 
 void	update_game(t_game_state *game_state)
 {
+	if (game_state->AI_switch == true && game_state->turn % 2 == game_state->AI_turn)
+		AI_select_turn(game_state);
+
 	if (valid_move(game_state) == true)
 	{
 		if (game_state->turn % 2 == O_TURN)

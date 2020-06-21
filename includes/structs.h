@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 03:05:42 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 03:13:21 by home             ###   ########.fr       */
+/*   Updated: 2020/06/20 18:48:29 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef struct	s_game_context
 
 	SDL_Texture	*texture;
 	SDL_Rect	*src_rect;
+
+	bool		AI_switch;
+	char		AI_turn;
 
 	int			turn;
 	char		map[9];

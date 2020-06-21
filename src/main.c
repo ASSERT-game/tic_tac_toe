@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 03:43:06 by home             ###   ########.fr       */
+/*   Updated: 2020/06/20 18:50:23 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,23 @@ void	game_context_initialize(t_game_state *game_state, t_display *display)
 
 	game_state->src_rect = carve_tictactoe_texture();
 
+	game_state->AI_switch = false;
+	game_state->AI_turn = NONE;
+
 	reset_selection(game_state);
 
 	game_state->turn = 0;
 }
 
-int	main(void)
+int	main(int aa, char **args)
 {
 	t_display		display;
 	t_game_state	game_state;
 
 	SDLU_start(&display);
 	game_context_initialize(&game_state, &display);
+	if (aa == 2 && strcmp(args[1], "AI") == 0)
+		AI_initialize(&game_state);
 	while (game_state.active == true)
 	{
 		process_user_input(&game_state);

@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 03:57:35 by home              #+#    #+#             */
-/*   Updated: 2020/06/19 04:03:11 by home             ###   ########.fr       */
+/*   Updated: 2020/06/20 18:55:52 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void		SDLU_start(t_display *dest);
 void		SDLU_close(t_display *display);
 
 SDL_Rect	*carve_tictactoe_texture(void);
+
+void		AI_initialize(t_game_state *game_state);
+void		AI_select_turn(t_game_state *game_state);
 
 void		draw_hover_tile(t_game_state *game_state, t_display *display);
 void		draw_grid(t_game_state *game_state, t_display *display);

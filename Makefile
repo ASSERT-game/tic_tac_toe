@@ -8,6 +8,7 @@ BIN_DIR = bin/
 
 # List of all the source files.
 SRC_NAMES = \
+	ai_routine \
 	carve_texture \
 	game_input \
 	main \
@@ -62,3 +63,9 @@ run:
 	@echo "\033[1m\033[32m$(NAME)\033[0m"
 	@./$(NAME)
 
+run_solo:
+	rm -f $(NAME)
+	make all
+	clear
+	@echo "\033[1m\033[32m$(NAME)\033[0m"
+	@./$(NAME) "AI"

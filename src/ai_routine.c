@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 18:46:23 by home              #+#    #+#             */
-/*   Updated: 2020/06/20 22:54:34 by home             ###   ########.fr       */
+/*   Updated: 2020/06/26 03:08:43 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	do_action(int choice, char *board, int turn, char player_type)
 		opponent = X_TEX;
 	}
 
-	if (turn % 2 == 0)
+	if (turn % 2 == OUR_TURN)
 		board[choice] = player;
 	else
 		board[choice] = opponent;
@@ -76,76 +76,54 @@ void	undo_action(int choice, char *board, int turn, char player)
 	(void)player;
 }
 
-void	print_board(char *board)
+int	min_max_starting_limit(int turn)
 {
-	printf("%.3s\n", &board[0]);
-	printf("%.3s\n", &board[3]);
-	printf("%.3s\n", &board[6]);
+	int	result;
+
+	if (turn % 2 == OUR_TURN)
+		result = MAXIMIZING_LOWER_LIMIT;
+	else
+		result = MINIMIZING_UPPER_LIMIT;
+	return (result);
 }
 
 int	min_max(t_game_state *board, int depth, int *choice_dest)
 {
 	int	i;
-	int	choice;
 	int	result;
 	int	current_desirability;
 	int	total_choices;
 	int	choice_list[9];
 
-	i = 0;
-	choice = -1;
-	if (depth % 2 == 0)
-		result = -3000;
+	if (win_state(board->map) == true && (depth - 1) % 2 == OUR_TURN)
+		return (1);
 	else
-		result = 3000;
+		return (-1);
+
 	total_choices = make_choice_list(choice_list, board->map);
+	if (depth >= MAX_DEPTH || total_choices == 0)
+		return (UNDECIDABLE_DESIRABILITY);
 
-	if (depth >= 10 || total_choices == 0)
-	{
-		if (win_state(board->map) == true)
-		{
-			if (depth % 2 == 1)
-				return (1);
-			else
-				return (-1);
-		}
-		else
-			return (0);
-	}
-
+	i = 0;
+	result = min_max_starting_limit(depth);
 	while (i < total_choices)
 	{
 		do_action(choice_list[i], board->map, depth, board->AI_turn);
-		if (win_state(board->map) == true)
-		{
-			if (depth % 2 == 0)
-				current_desirability = 1;
-			else
-				current_desirability = -1;
-		}
-		else
-			current_desirability = min_max(board, depth + 1, choice_dest);
 
-		if (depth % 2 == 0)
-		{
-			if (current_desirability > result)
-			{
-				result = current_desirability;
-				choice = choice_list[i];
-			}
-		}
-		else
-		{
-			if (current_desirability < result)
-				result = current_desirability;
-		}
+		current_desirability = min_max(board, depth + 1, choice_dest);
+
+		if (depth % 2 == OUR_TURN && current_desirability > result)
+			result = current_desirability;
+		else if (depth % 2 != OUR_TURN && current_desirability < result)
+			result = current_desirability;
+
+		if (depth == 0 && current_desirability > result)
+					*choice_dest = choice_list[i];
 
 		undo_action(choice_list[i], board->map, depth, board->AI_turn);
 		i++;
 	}
 
-	if (depth == 0 && choice != -1)
-		*choice_dest = choice;
 	return (result);
 }
 

@@ -63,7 +63,7 @@ run:
 	@echo "\033[1m\033[32m$(NAME)\033[0m"
 	@./$(NAME)
 
-run_solo:
+vs_ai:
 	rm -f $(NAME)
 	make all
 	clear

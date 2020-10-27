@@ -1,8 +1,9 @@
 # tic_tac_toe
 
 Game of Tic Tac Toe, implemented in C with the help of SDL graphics library. Project was used to get an
-understanding of the [min-maxing algorithm](https://en.wikipedia.org/wiki/Minimax). After running ```make```
-you can run the executable ```tic_tac_toe``` to play with someone else, or ```tic_tac_toe AI``` to play against the AI, you can also just do ```make vs_ai```.
+understanding of the [min-maxing algorithm](https://en.wikipedia.org/wiki/Minimax). 
+
+Requires SDL2 and SDL_image installed in ~/.brew. After running ```make``` you can run the executable ```tic_tac_toe``` to play with someone else, or ```tic_tac_toe AI``` to play against the AI, you can also just do ```make vs_ai```.
 
 <br>
 <img align="top" height="250" src="https://github.com/ASSERT-game/tic_tac_toe/blob/master/resources/gameplay.gif" />

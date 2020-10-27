@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/25 23:40:03 by home             ###   ########.fr       */
+/*   Updated: 2020/10/26 17:30:58 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	game_context_initialize(t_game_state *game_state, t_display *display)
 
 	game_state->turn = 0;
 }
+
+#include <unistd.h>
 
 int	main(int aa, char **args)
 {
@@ -57,6 +59,7 @@ int	main(int aa, char **args)
 		SDL_RenderPresent(display.renderer);
 		SDL_RenderClear(display.renderer);
 	}
+	sleep(1);
 	SDLU_close(&display);
 	printf("Thank you for playing.\n");
 	return (0);

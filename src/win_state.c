@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 03:18:34 by home              #+#    #+#             */
-/*   Updated: 2020/06/20 22:28:10 by home             ###   ########.fr       */
+/*   Updated: 2020/10/26 17:24:32 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,10 @@ bool	win_state(char *game_state)
 
 	result = false;
 	if (horizontal_check(game_state) == true)
-	{
-		// printf("H");
 		result = true;
-	}
 	else if (vertical_check(game_state) == true)
-	{
-		// printf("V");
 		result = true;
-	}
 	else if (diagonal_check(game_state) == true)
-	{
-		// printf("D");
 		result = true;
-	}
 	return (result);
 }

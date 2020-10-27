@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 18:46:23 by home              #+#    #+#             */
-/*   Updated: 2020/06/26 03:08:43 by home             ###   ########.fr       */
+/*   Updated: 2020/10/26 17:25:09 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,14 @@ int	min_max(t_game_state *board, int depth, int *choice_dest)
 	int	total_choices;
 	int	choice_list[9];
 
-	if (win_state(board->map) == true && (depth - 1) % 2 == OUR_TURN)
+
+	if (win_state(board->map) == true && ((depth - 1) % 2) == OUR_TURN)
 		return (1);
-	else
+	else if (win_state(board->map) == true)
 		return (-1);
 
 	total_choices = make_choice_list(choice_list, board->map);
-	if (depth >= MAX_DEPTH || total_choices == 0)
+	if (depth >= MAX_DEPTH + 3 || total_choices == 0)
 		return (UNDECIDABLE_DESIRABILITY);
 
 	i = 0;
@@ -112,18 +113,17 @@ int	min_max(t_game_state *board, int depth, int *choice_dest)
 
 		current_desirability = min_max(board, depth + 1, choice_dest);
 
+		if (current_desirability > result && depth == 0) // This needs to be done first, before result is updated.
+			*choice_dest = choice_list[i];
+
 		if (depth % 2 == OUR_TURN && current_desirability > result)
 			result = current_desirability;
 		else if (depth % 2 != OUR_TURN && current_desirability < result)
 			result = current_desirability;
 
-		if (depth == 0 && current_desirability > result)
-					*choice_dest = choice_list[i];
-
 		undo_action(choice_list[i], board->map, depth, board->AI_turn);
 		i++;
 	}
-
 	return (result);
 }
 
@@ -136,14 +136,10 @@ void	AI_select_turn(t_game_state *game_state)
 	i = 0;
 
 	min_max(game_state, 0, &i);
-	// while (i < 9 && game_state->map[i] != NONE)
-	// 	i++;
 
 	x = (i % 3) * 64;
 	y = (i / 3) * 64;
 
 	game_state->select_x = x;
 	game_state->select_y = y;
-
-	printf("TURN: %d at (%d, %d)\n", i, x, y);
 }
